@@ -56,11 +56,13 @@ const Playlists = ({ playlists = playlistsStub }) => {
               style={{ borderRadius: 4 }}
             ></iframe>
           </Box>
-          <Stack>
-            <Heading fontSize="xl" marginBottom={0}>
-              {playlist.title}
-            </Heading>
-            <Text fontSize="sm">{playlist.description}</Text>
+          <Stack spacing="1" justify="center">
+            <Box>
+              <Heading fontSize="xl">{playlist.title}</Heading>
+            </Box>
+            <Box>
+              <Text fontSize="sm">{playlist.description}</Text>
+            </Box>
           </Stack>
           <UpvoteButton />
         </Grid>

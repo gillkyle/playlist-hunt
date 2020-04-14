@@ -1,3 +1,3 @@
 module.exports = {
-  plugins: [`gatsby-plugin-chakra-ui`],
+  plugins: [`gatsby-plugin-chakra-ui`, `gatsby-plugin-use-auth`],
 }
