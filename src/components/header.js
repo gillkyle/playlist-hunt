@@ -3,6 +3,7 @@ import { Link as GatsbyLink } from "gatsby"
 import {
   Button,
   Flex,
+  Image,
   Menu,
   MenuButton,
   MenuGroup,
@@ -13,6 +14,7 @@ import {
 } from "@chakra-ui/core"
 import { useAuth } from "react-use-auth"
 
+import Logo from "../img/logo.png"
 import ClientOnly from "./client-only"
 
 const Header = () => {
@@ -20,8 +22,13 @@ const Header = () => {
 
   return (
     <Flex align="center" justify="space-between" p="4">
-      <Text fontWeight="bold" color="blue.600" fontSize="lg">
-        Playlist · Hunt
+      <Text
+        fontWeight="bold"
+        color="blue.600"
+        fontSize="lg"
+        letterSpacing={1.1}
+      >
+        <Image src={Logo} height={12} />
       </Text>
       <Stack isInline align="center" spacing="3">
         <Button variant="ghost" as={GatsbyLink} to="/">
