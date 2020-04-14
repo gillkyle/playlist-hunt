@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useAuth } from "react-use-auth"
+import { Heading, Text } from "@chakra-ui/core"
 
-import Layout from "../components/layout"
 import Playlists from "../components/playlists"
 
 export default () => {
@@ -11,11 +11,12 @@ export default () => {
   }, [])
 
   return (
-    <Layout
-      title="Newest Playlists"
-      subtitle="The latest playlists from the community, coming in live."
-    >
+    <React.Fragment>
+      <Heading as="h1">Newest Playlists</Heading>
+      <Text textAlign="center">
+        The latest playlists from the community, coming in live.
+      </Text>
       <Playlists playlists={undefined} />
-    </Layout>
+    </React.Fragment>
   )
 }

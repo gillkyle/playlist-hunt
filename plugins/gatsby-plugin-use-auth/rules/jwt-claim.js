@@ -1,3 +1,5 @@
+/* JWT CLAIM RULE FOR AUTH0
+
 function (user, context, callback) {
   const namespace = "https://hasura.io/jwt/claims";
   context.idToken[namespace] = 
@@ -8,3 +10,5 @@ function (user, context, callback) {
     };
   callback(null, user, context);
 }
+
+*/

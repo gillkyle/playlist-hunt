@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Grid, Heading, Stack, Text, Button } from "@chakra-ui/core"
+import { Box, Grid, Heading, Stack, Text, PseudoBox } from "@chakra-ui/core"
 
 import UpvoteButton from "./upvote-button"
 import { getPlaylistId } from "../utils/helpers"
@@ -34,38 +34,43 @@ const playlistsStub = [
 
 const Playlists = ({ playlists = playlistsStub }) => {
   return (
-    <Stack width="100%" spacing="1px">
+    <Stack width="100%" spacing="1px" my={4}>
       {playlists.map(playlist => (
-        <Grid
-          gridTemplateColumns="80px 1fr 80px"
-          gridGap="3"
-          p="3"
+        <PseudoBox
+          _first={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
+          _last={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
           bg="gray.100"
-          width="100%"
         >
-          <Box bg="gray.300">
-            <iframe
-              src={`https://open.spotify.com/embed/playlist/${getPlaylistId(
-                playlist.uri
-              )}`}
-              width="80"
-              height="80"
-              frameborder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-              style={{ borderRadius: 4 }}
-            ></iframe>
-          </Box>
-          <Stack spacing="1" justify="center">
-            <Box>
-              <Heading fontSize="xl">{playlist.title}</Heading>
+          <Grid
+            gridTemplateColumns="80px 1fr 80px"
+            gridGap="3"
+            p="3"
+            width="100%"
+          >
+            <Box bg="gray.300">
+              <iframe
+                src={`https://open.spotify.com/embed/playlist/${getPlaylistId(
+                  playlist.uri
+                )}`}
+                width="80"
+                height="80"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+                style={{ borderRadius: 4 }}
+              ></iframe>
             </Box>
-            <Box>
-              <Text fontSize="sm">{playlist.description}</Text>
-            </Box>
-          </Stack>
-          <UpvoteButton />
-        </Grid>
+            <Stack spacing="1" justify="center">
+              <Box>
+                <Heading fontSize="xl">{playlist.title}</Heading>
+              </Box>
+              <Box>
+                <Text fontSize="sm">{playlist.description}</Text>
+              </Box>
+            </Stack>
+            <UpvoteButton />
+          </Grid>
+        </PseudoBox>
       ))}
     </Stack>
   )
