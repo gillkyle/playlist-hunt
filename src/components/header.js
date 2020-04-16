@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link as GatsbyLink } from "gatsby"
 import {
   Button,
@@ -18,8 +18,15 @@ import Logo from "../img/logo.png"
 import ClientOnly from "./client-only"
 
 const Header = () => {
-  const { login, logout, isAuthenticated, user } = useAuth()
-
+  const { login, logout, isAuthenticated, user, authResult } = useAuth()
+  useEffect(() => {
+    if (authResult) {
+      localStorage.setItem("token", JSON.stringify(authResult.idToken))
+      console.log(authResult.idToken)
+    }
+  }, [authResult])
+  console.log({ user })
+  console.log({ authResult })
   return (
     <Flex align="center" justify="space-between" p="4">
       <Text

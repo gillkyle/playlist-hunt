@@ -14,13 +14,19 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
+    "@auth0/auth0-spa-js": "^1.7.0",
     "@chakra-ui/core": "^0.7.0",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@theme-ui/presets": "^0.3.0",
+    "apollo-boost": "^0.4.7",
     "emotion-theming": "^10.0.27",
-    "gatsby": "^2.20.12",
+    "gatsby": "^2.20.23",
     "gatsby-plugin-chakra-ui": "^0.1.4",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-use-auth": "^0.5.3"
