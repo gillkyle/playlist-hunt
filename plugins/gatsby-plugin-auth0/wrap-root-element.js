@@ -13,6 +13,7 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
       client_id={pluginOptions.clientId}
       redirect_uri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
+      cacheLocation="localstorage"
     >
       {element}
     </Auth0Provider>
