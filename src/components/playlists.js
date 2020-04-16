@@ -37,6 +37,7 @@ const Playlists = ({ playlists = playlistsStub }) => {
     <Stack width="100%" spacing="1px" my={4}>
       {playlists.map(playlist => (
         <PseudoBox
+          key={playlist.uri}
           _first={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
           _last={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
           bg="gray.100"
@@ -49,12 +50,13 @@ const Playlists = ({ playlists = playlistsStub }) => {
           >
             <Box bg="gray.300">
               <iframe
+                title={`Spotify playlist embed for ${playlist.title}`}
                 src={`https://open.spotify.com/embed/playlist/${getPlaylistId(
                   playlist.uri
                 )}`}
                 width="80"
                 height="80"
-                frameborder="0"
+                frameBorder="0"
                 allowtransparency="true"
                 allow="encrypted-media"
                 style={{ borderRadius: 4 }}

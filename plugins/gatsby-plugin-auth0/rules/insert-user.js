@@ -1,5 +1,7 @@
 /* INSERT USER RULE FOR AUTH0
 
+TODO: add this to recipe
+
 function (user, context, callback) {
   const userId = user.user_id;
   const nickname = user.nickname;

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react"
-import { useAuth } from "react-use-auth"
+import React from "react"
 import { Heading, Text } from "@chakra-ui/core"
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
@@ -18,12 +17,9 @@ const PLAYLISTS_QUERY = gql`
 `
 
 export default () => {
-  const { handleAuthentication } = useAuth()
-  useEffect(() => {
-    handleAuthentication()
-  }, [])
   const { data, loading, error } = useQuery(PLAYLISTS_QUERY)
-  console.log(data)
+  console.log({ data, loading, error })
+
   return (
     <React.Fragment>
       <Heading as="h1">Newest Playlists</Heading>

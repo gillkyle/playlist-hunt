@@ -1,14 +1,5 @@
 import React, { useState } from "react"
-import {
-  Flex,
-  Grid,
-  Heading,
-  Stack,
-  StatNumber,
-  StatArrow,
-  Text,
-  Button,
-} from "@chakra-ui/core"
+import { Stack, StatNumber, StatArrow, Button } from "@chakra-ui/core"
 
 const UpvoteButton = ({ playlistId }) => {
   const [upvoted, setUpvoted] = useState(false)
