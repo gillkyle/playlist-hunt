@@ -42,7 +42,7 @@ const Playlists = ({ playlists }) => {
                 <Text fontSize="sm">{playlist.description}</Text>
               </Box>
             </Stack>
-            <UpvoteButton />
+            <UpvoteButton playlist={playlist} />
           </Grid>
         </PseudoBox>
       ))}

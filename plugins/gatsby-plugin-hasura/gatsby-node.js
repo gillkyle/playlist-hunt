@@ -1,5 +1,4 @@
-const ApolloBoost = require("apollo-boost")
-const ApolloClient = ApolloBoost.default
+const ApolloClient = require("apollo-boost").default
 const fetch = require("isomorphic-fetch")
 const gql = require("graphql-tag")
 

@@ -2,10 +2,10 @@ import React, { useState } from "react"
 import { Stack, StatNumber, StatArrow, Button } from "@chakra-ui/core"
 import { useAuth0 } from "../../plugins/gatsby-plugin-auth0"
 
-const UpvoteButton = ({ playlistId }) => {
+const UpvoteButton = ({ playlist }) => {
   const [upvoted, setUpvoted] = useState(false)
   const { loginWithRedirect, isAuthenticated } = useAuth0()
-
+  console.log(playlist)
   return (
     <Button
       height="100%"
@@ -25,7 +25,9 @@ const UpvoteButton = ({ playlistId }) => {
           type="increase"
           m={0}
         ></StatArrow>
-        <StatNumber fontSize="lg">0</StatNumber>
+        <StatNumber fontSize="lg">
+          {playlist.upvotes_aggregate.aggregate.count}
+        </StatNumber>
       </Stack>
     </Button>
   )

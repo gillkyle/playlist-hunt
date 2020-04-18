@@ -7,18 +7,23 @@ import Playlists, { PlaylistsPlaceholder } from "../components/playlists"
 
 const NEW_PLAYLISTS = gql`
   query PlaylistsQuery {
-    playlist(order_by: { created_at: asc }) {
+    playlist(order_by: { created_at: desc }) {
       id
       title
       description
       uri
+      upvotes_aggregate {
+        aggregate {
+          count(columns: upvoted_at)
+        }
+      }
     }
   }
 `
 
 export default () => {
   const { loading, data, error } = useQuery(NEW_PLAYLISTS)
-  console.log(data)
+
   return (
     <React.Fragment>
       <Heading as="h1">Newest Playlists</Heading>

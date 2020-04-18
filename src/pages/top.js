@@ -25,13 +25,12 @@ export const TOP_PLAYLISTS = graphql`
   }
 `
 
-export default ({ data }) =>
-  console.log(data) || (
-    <React.Fragment>
-      <Heading as="h1">Top Playlists</Heading>
-      <Text textAlign="center">
-        The best playlists historically from the community. Updated daily.
-      </Text>
-      <Playlists playlists={data.allPlaylist.nodes} />
-    </React.Fragment>
-  )
+export default ({ data }) => (
+  <React.Fragment>
+    <Heading as="h1">Top Playlists</Heading>
+    <Text textAlign="center">
+      The best playlists historically from the community. Updated daily.
+    </Text>
+    <Playlists playlists={data.allPlaylist.nodes} />
+  </React.Fragment>
+)
