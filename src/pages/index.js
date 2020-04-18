@@ -3,9 +3,9 @@ import { Heading, Text } from "@chakra-ui/core"
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 
-import Playlists from "../components/playlists"
+import Playlists, { PlaylistsPlaceholder } from "../components/playlists"
 
-const PLAYLISTS_QUERY = gql`
+const NEW_PLAYLISTS = gql`
   query PlaylistsQuery {
     playlist(order_by: { created_at: asc }) {
       id
@@ -17,8 +17,7 @@ const PLAYLISTS_QUERY = gql`
 `
 
 export default () => {
-  const { data, loading, error } = useQuery(PLAYLISTS_QUERY)
-  console.log({ data, loading, error })
+  const { loading, data, error } = useQuery(NEW_PLAYLISTS)
 
   return (
     <React.Fragment>
@@ -26,7 +25,9 @@ export default () => {
       <Text textAlign="center">
         The latest playlists from the community, coming in live.
       </Text>
-      <Playlists playlists={undefined} />
+      {loading && <PlaylistsPlaceholder />}
+      {data && <Playlists playlists={data.playlists} />}
+      {error && "There was an error loading data"}
     </React.Fragment>
   )
 }

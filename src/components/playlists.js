@@ -79,3 +79,23 @@ const Playlists = ({ playlists = playlistsStub }) => {
 }
 
 export default Playlists
+
+export const PlaylistsPlaceholder = () => (
+  <Stack width="100%" spacing="1px" my={4}>
+    {Array(5)
+      .fill()
+      .map((_, index) => (
+        <PseudoBox
+          key={index}
+          height="100px"
+          width="100%"
+          _first={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
+          _last={{
+            borderBottomLeftRadius: 4,
+            borderBottomRightRadius: 4,
+          }}
+          bg="gray.100"
+        />
+      ))}
+  </Stack>
+)

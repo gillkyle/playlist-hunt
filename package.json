@@ -24,7 +24,6 @@
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.20.23",
     "gatsby-plugin-chakra-ui": "^0.1.4",
-    "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.12.0",

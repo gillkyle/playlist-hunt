@@ -1,7 +1,26 @@
 import React from "react"
+import { graphql } from "gatsby"
 
 import { Heading, Text } from "@chakra-ui/core"
 import Playlists from "../components/playlists"
+
+export const TOP_PLAYLISTS = graphql`
+  query TopPlaylists {
+    playlistHunt {
+      playlist {
+        id
+        title
+        description
+        uri
+        upvotes_aggregate {
+          aggregate {
+            count(columns: upvoted_at)
+          }
+        }
+      }
+    }
+  }
+`
 
 export default () => (
   <React.Fragment>
