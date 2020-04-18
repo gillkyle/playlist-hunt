@@ -35,8 +35,6 @@ const ApolloComponent = ({ element }) => {
   return <ApolloProvider client={client}>{element}</ApolloProvider>
 }
 
-const ApolloWrapper = ({ element }) => {
+export const wrapRootElement = ({ element }) => {
   return <ApolloComponent element={element} />
 }
-
-export const wrapRootElement = ApolloWrapper

@@ -11,7 +11,9 @@ export const wrapRootElement = ({ element }, pluginOptions) => {
     <Auth0Provider
       domain={pluginOptions.domain}
       client_id={pluginOptions.clientId}
-      redirect_uri={window.location.origin}
+      redirect_uri={
+        typeof window !== `undefined` ? window.location.origin : null
+      }
       onRedirectCallback={onRedirectCallback}
       cacheLocation="localstorage"
     >

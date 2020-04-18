@@ -18,7 +18,7 @@ const NEW_PLAYLISTS = gql`
 
 export default () => {
   const { loading, data, error } = useQuery(NEW_PLAYLISTS)
-
+  console.log(data)
   return (
     <React.Fragment>
       <Heading as="h1">Newest Playlists</Heading>
@@ -26,7 +26,7 @@ export default () => {
         The latest playlists from the community, coming in live.
       </Text>
       {loading && <PlaylistsPlaceholder />}
-      {data && <Playlists playlists={data.playlists} />}
+      {data && <Playlists playlists={data.playlist} />}
       {error && "There was an error loading data"}
     </React.Fragment>
   )

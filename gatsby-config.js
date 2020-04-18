@@ -9,5 +9,6 @@ module.exports = {
         clientId: `jnp9gQqg31Dcmr2iREXheChlk6g4BaHT`,
       },
     },
+    `gatsby-plugin-hasura`,
   ],
 }

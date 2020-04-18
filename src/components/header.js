@@ -18,7 +18,6 @@ import ClientOnly from "./client-only"
 
 const Header = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
-  console.log({ user })
 
   return (
     <Flex align="center" justify="space-between" p="4">
