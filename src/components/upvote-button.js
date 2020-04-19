@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Stack, StatNumber, StatArrow, Button } from "@chakra-ui/core"
 import { useAuth0 } from "../../plugins/gatsby-plugin-auth0"
 import { useQuery, useMutation } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 
-const UPVOTE_QUERY = gql`
+const GET_UPVOTES = gql`
   query UpvoteQuery($playlistId: Int!, $userId: String) {
     hasUpvoted: upvote(
       where: { playlist_id: { _eq: $playlistId }, user_id: { _eq: $userId } }
@@ -13,10 +13,13 @@ const UPVOTE_QUERY = gql`
       user_id
       upvoted_at
     }
-    upvotes: upvote(where: { playlist_id: { _eq: $playlistId } }) {
+    upvotes: playlist(where: { id: { _eq: $playlistId } }) {
       id
-      user_id
-      upvoted_at
+      upvote_aggregate {
+        aggregate {
+          count(columns: upvoted_at)
+        }
+      }
     }
   }
 `
@@ -46,20 +49,19 @@ const UPSERT_UPVOTE = gql`
 `
 
 const UpvoteButton = ({ playlist }) => {
+  const [upvoted, setUpvoted] = useState()
   const { loginWithRedirect, isAuthenticated, user } = useAuth0()
-  const { data, loading, error } = useQuery(UPVOTE_QUERY, {
+  const { data, loading, error } = useQuery(GET_UPVOTES, {
     variables: {
       userId: user?.sub,
       playlistId: playlist.playlistId,
     },
   })
-  const [upsertUpvote, { error: muterr, data: mutdata }] = useMutation(
-    UPSERT_UPVOTE
-  )
-  console.log({ muterr, mutdata })
-  console.log(data)
-  const upvoted = isAuthenticated && !!data?.hasUpvoted?.[0]?.upvoted_at
-  const upvoteCount = data?.upvotes.filter(upvote => upvote.upvoted_at).length
+  const [upsertUpvote] = useMutation(UPSERT_UPVOTE)
+
+  useEffect(() => {
+    setUpvoted(isAuthenticated && !!data?.hasUpvoted?.[0]?.upvoted_at)
+  }, [data, isAuthenticated])
 
   return (
     <Button
@@ -76,6 +78,7 @@ const UpvoteButton = ({ playlist }) => {
                 userId: user.sub,
                 upvotedAt: null,
               },
+              refetchQueries: [`UpvoteQuery`],
             })
           } else {
             console.log(`perform upvote`)
@@ -85,6 +88,7 @@ const UpvoteButton = ({ playlist }) => {
                 userId: user.sub,
                 upvotedAt: new Date().toISOString(),
               },
+              refetchQueries: [`UpvoteQuery`],
             })
           }
         } else {
@@ -100,7 +104,7 @@ const UpvoteButton = ({ playlist }) => {
         ></StatArrow>
         <StatNumber fontSize="lg">
           {(loading || error) && null}
-          {data && upvoteCount}
+          {data && data?.upvotes?.[0].upvote_aggregate.aggregate.count}
         </StatNumber>
       </Stack>
     </Button>
