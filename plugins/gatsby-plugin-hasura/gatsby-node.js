@@ -1,4 +1,4 @@
-const ApolloClient = require("apollo-boost").default
+const ApolloClient = require("apollo-boost").default // returns an object that contains ApolloClient, hence the .default
 const fetch = require("isomorphic-fetch")
 const gql = require("graphql-tag")
 
@@ -17,12 +17,12 @@ exports.sourceNodes = async ({
   const { data } = await client.query({
     query: gql`
       query {
-        playlist(order_by: { upvotes_aggregate: { count: desc } }) {
+        playlist(order_by: { upvote_aggregate: { count: desc } }) {
           id
           title
           description
           uri
-          upvotes_aggregate(order_by: {}) {
+          upvote_aggregate {
             aggregate {
               count(columns: upvoted_at)
             }
@@ -35,6 +35,7 @@ exports.sourceNodes = async ({
   data.playlist.forEach(playlist =>
     createNode({
       ...playlist,
+      playlistId: playlist.id,
       id: createNodeId(`Playlist-${playlist.id}`),
       parent: null,
       children: [],

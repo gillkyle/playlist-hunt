@@ -7,15 +7,15 @@ import Playlists from "../components/playlists"
 export const TOP_PLAYLISTS = graphql`
   query {
     allPlaylist(
-      sort: { fields: upvotes_aggregate___aggregate___count, order: DESC }
+      sort: { fields: upvote_aggregate___aggregate___count, order: DESC }
       limit: 10
     ) {
       nodes {
-        id
+        playlistId
         uri
         title
         description
-        upvotes_aggregate {
+        upvote_aggregate {
           aggregate {
             count
           }

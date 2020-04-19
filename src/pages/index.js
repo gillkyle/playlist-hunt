@@ -8,11 +8,11 @@ import Playlists, { PlaylistsPlaceholder } from "../components/playlists"
 const NEW_PLAYLISTS = gql`
   query PlaylistsQuery {
     playlist(order_by: { created_at: desc }) {
-      id
+      playlistId: id
       title
       description
       uri
-      upvotes_aggregate {
+      upvote_aggregate {
         aggregate {
           count(columns: upvoted_at)
         }
