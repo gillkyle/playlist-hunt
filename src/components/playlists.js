@@ -1,10 +1,20 @@
 import React from "react"
-import { Box, Grid, Heading, Stack, Text, PseudoBox } from "@chakra-ui/core"
+import {
+  Box,
+  Grid,
+  Heading,
+  Stack,
+  Text,
+  PseudoBox,
+  useColorMode,
+} from "@chakra-ui/core"
 
 import UpvoteButton from "./upvote-button"
 import { getPlaylistId } from "../utils/helpers"
 
 const Playlists = ({ playlists }) => {
+  const { colorMode } = useColorMode()
+
   return (
     <Stack width="100%" spacing="1px" my={4}>
       {playlists.map(playlist => (
@@ -12,7 +22,7 @@ const Playlists = ({ playlists }) => {
           key={playlist.uri}
           _first={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
           _last={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
-          bg="gray.100"
+          bg={{ light: "gray.100", dark: "gray.700" }[colorMode]}
         >
           <Grid
             gridTemplateColumns="80px 1fr 80px"
@@ -20,7 +30,7 @@ const Playlists = ({ playlists }) => {
             p="3"
             width="100%"
           >
-            <Box bg="gray.300">
+            <Box bg="gray.300" borderRadius={4}>
               <iframe
                 title={`Spotify playlist embed for ${playlist.title}`}
                 src={`https://open.spotify.com/embed/playlist/${getPlaylistId(
@@ -52,22 +62,26 @@ const Playlists = ({ playlists }) => {
 
 export default Playlists
 
-export const PlaylistsPlaceholder = () => (
-  <Stack width="100%" spacing="1px" my={4}>
-    {Array(5)
-      .fill()
-      .map((_, index) => (
-        <PseudoBox
-          key={index}
-          height="100px"
-          width="100%"
-          _first={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
-          _last={{
-            borderBottomLeftRadius: 4,
-            borderBottomRightRadius: 4,
-          }}
-          bg="gray.100"
-        />
-      ))}
-  </Stack>
-)
+export const PlaylistsPlaceholder = () => {
+  const { colorMode } = useColorMode()
+
+  return (
+    <Stack width="100%" spacing="1px" my={4}>
+      {Array(5)
+        .fill()
+        .map((_, index) => (
+          <PseudoBox
+            key={index}
+            height="100px"
+            width="100%"
+            _first={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
+            _last={{
+              borderBottomLeftRadius: 4,
+              borderBottomRightRadius: 4,
+            }}
+            bg={{ light: "gray.100", dark: "gray.700" }[colorMode]}
+          />
+        ))}
+    </Stack>
+  )
+}

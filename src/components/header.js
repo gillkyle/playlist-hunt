@@ -10,6 +10,7 @@ import {
   MenuList,
   Stack,
   Text,
+  useColorMode,
 } from "@chakra-ui/core"
 import { useAuth0 } from "../../plugins/gatsby-plugin-auth0"
 
@@ -18,6 +19,7 @@ import ClientOnly from "./client-only"
 
 const Header = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
+  const { toggleColorMode } = useColorMode()
 
   return (
     <Flex align="center" justify="space-between" p="4">
@@ -45,6 +47,9 @@ const Header = () => {
               <MenuList placement="bottom-end">
                 <MenuItem isDisabled>{user?.email}</MenuItem>
                 <MenuItem onClick={() => navigate(`/submit`)}>Submit</MenuItem>
+                <MenuItem onClick={() => toggleColorMode()}>
+                  Toggle Color Mode
+                </MenuItem>
                 <MenuItem>
                   <a href="mailto:kyle.robert.gill@gmail.com">Contact Us</a>
                 </MenuItem>
