@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Stack, StatNumber, StatArrow, Button } from "@chakra-ui/core"
 import { useAuth0 } from "../../plugins/gatsby-plugin-auth0"
 import { useQuery, useMutation } from "@apollo/react-hooks"
@@ -49,7 +49,6 @@ const UPSERT_UPVOTE = gql`
 `
 
 const UpvoteButton = ({ playlist }) => {
-  const [upvoted, setUpvoted] = useState()
   const { loginWithRedirect, isAuthenticated, user } = useAuth0()
   const { data, loading, error } = useQuery(GET_UPVOTES, {
     variables: {
@@ -59,9 +58,7 @@ const UpvoteButton = ({ playlist }) => {
   })
   const [upsertUpvote] = useMutation(UPSERT_UPVOTE)
 
-  useEffect(() => {
-    setUpvoted(isAuthenticated && !!data?.hasUpvoted?.[0]?.upvoted_at)
-  }, [data, isAuthenticated])
+  const upvoted = isAuthenticated && !!data?.hasUpvoted?.[0]?.upvoted_at
 
   return (
     <Button

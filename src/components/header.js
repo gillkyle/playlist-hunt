@@ -1,5 +1,5 @@
 import React from "react"
-import { Link as GatsbyLink } from "gatsby"
+import { Link as GatsbyLink, navigate } from "gatsby"
 import {
   Button,
   Flex,
@@ -44,6 +44,7 @@ const Header = () => {
               </MenuButton>
               <MenuList placement="bottom-end">
                 <MenuItem isDisabled>{user?.email}</MenuItem>
+                <MenuItem onClick={() => navigate(`/submit`)}>Submit</MenuItem>
                 <MenuItem>
                   <a href="mailto:kyle.robert.gill@gmail.com">Contact Us</a>
                 </MenuItem>
