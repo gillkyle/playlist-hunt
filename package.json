@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "GATSBY_EXPERIMENTAL_ROUTING_APIS=1 gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -23,7 +23,7 @@
     "apollo-boost": "^0.4.7",
     "emotion-theming": "^10.0.27",
     "formik": "^2.1.4",
-    "gatsby": "^2.20.23",
+    "gatsby": "^2.20.24-unifiedroutes-v2.130",
     "gatsby-plugin-chakra-ui": "^0.1.4",
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",

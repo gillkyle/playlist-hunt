@@ -54,7 +54,7 @@ const UPSERT_UPVOTE = gql`
   }
 `
 
-const UpvoteButton = ({ playlist }) => {
+const UpvoteButton = ({ playlist, ...props }) => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0()
   const { data, loading, error } = useQuery(GET_UPVOTES, {
     variables: {
@@ -98,6 +98,7 @@ const UpvoteButton = ({ playlist }) => {
           loginWithRedirect()
         }
       }}
+      {...props}
     >
       <Stack color={upvoted ? "blue.600" : "white"} align="center">
         <StatArrow
