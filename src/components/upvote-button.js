@@ -55,6 +55,7 @@ const UPSERT_UPVOTE = gql`
 `
 
 const UpvoteButton = ({ playlist, ...props }) => {
+  console.log(playlist)
   const { loginWithRedirect, isAuthenticated, user } = useAuth0()
   const { data, loading, error } = useQuery(GET_UPVOTES, {
     variables: {
@@ -65,7 +66,7 @@ const UpvoteButton = ({ playlist, ...props }) => {
   const [upsertUpvote] = useMutation(UPSERT_UPVOTE)
 
   const upvoted = isAuthenticated && !!data?.hasUpvoted?.[0]?.upvoted_at
-
+  console.log({ loading, error })
   return (
     <Button
       height="100%"
