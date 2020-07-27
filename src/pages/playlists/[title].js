@@ -18,13 +18,19 @@ const PLAYLIST_QUERY = gql`
 `
 
 const ClientPlaylistDetails = ({ title }) => {
-  const { loading, data, error } = useQuery(PLAYLIST_QUERY, {
+  const { loading, data } = useQuery(PLAYLIST_QUERY, {
     variables: { title: title.replace("-", " ") },
   })
 
+  const FOUND_PLAYLIST = data?.playlist.length === 1
+
   return (
     <React.Fragment>
-      <Heading as="h1">{data?.playlist[0].title ?? "Loading..."}</Heading>
+      <Heading as="h1">
+        {loading && "Loading..."}
+        {FOUND_PLAYLIST && data.playlist[0].title}
+        {!FOUND_PLAYLIST && "Playlist not Found"}
+      </Heading>
       <Text textAlign="center">Details about this playlist.</Text>
       <Grid
         bg="gray.200"
@@ -35,8 +41,9 @@ const ClientPlaylistDetails = ({ title }) => {
         gridTemplateColumns={`auto 1fr`}
         gridGap={4}
       >
-        {error && "No playlist found"}
-        {!loading && data.playlist.length === 1 && (
+        {loading && "Loading..."}
+        {!FOUND_PLAYLIST && "No playlist found at /" + title}
+        {FOUND_PLAYLIST && (
           <Fragment>
             <SpotifyEmbed
               wide
