@@ -19,7 +19,7 @@ const PLAYLIST_QUERY = gql`
 
 const ClientPlaylistDetails = ({ title }) => {
   const { loading, data } = useQuery(PLAYLIST_QUERY, {
-    variables: { title: title.replace("-", " ") },
+    variables: { title: title?.replace("-", " ") },
   })
 
   const FOUND_PLAYLIST = data?.playlist.length === 1
