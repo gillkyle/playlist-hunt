@@ -1,6 +1,7 @@
 const ApolloClient = require("apollo-boost").default // returns an object that contains ApolloClient, hence the .default
 const fetch = require("isomorphic-fetch")
 const gql = require("graphql-tag")
+const slugify = require("slugify")
 
 const client = new ApolloClient({
   uri: "https://playlist-hunt.herokuapp.com/v1/graphql",

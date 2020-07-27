@@ -14,7 +14,10 @@ import {
   PseudoBox,
   useColorMode,
 } from "@chakra-ui/core"
+import { Link as GatsbyLink } from "gatsby"
+import slugify from "slugify"
 
+import SpotifyEmbed from "./spotify-embed"
 import UpvoteButton from "./upvote-button"
 
 const Playlists = ({ playlists }) => {
@@ -35,23 +38,19 @@ const Playlists = ({ playlists }) => {
             p="3"
             width="100%"
           >
-            <Box bg="gray.300" borderRadius={4}>
-              <iframe
-                title={`Spotify playlist embed for ${playlist.title}`}
-                src={`https://open.spotify.com/embed/playlist/${
-                  playlist.uri?.split(":")[2]
-                }`}
-                width="80"
-                height="80"
-                frameBorder="0"
-                allowtransparency="true"
-                allow="encrypted-media"
-                style={{ borderRadius: 4 }}
-              ></iframe>
-            </Box>
+            <SpotifyEmbed title={playlist.title} spotifyUri={playlist.uri} />
             <Stack spacing="1" justify="center">
               <Box>
-                <Heading fontSize="xl">{playlist.title}</Heading>
+                <Heading
+                  fontSize="xl"
+                  as={GatsbyLink}
+                  to={
+                    playlist.path ??
+                    `/playlists/${slugify(playlist.title, { lower: true })}`
+                  }
+                >
+                  {playlist.title}
+                </Heading>
               </Box>
               <Box>
                 <Text fontSize="sm">{playlist.description}</Text>

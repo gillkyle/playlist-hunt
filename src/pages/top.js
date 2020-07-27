@@ -21,6 +21,7 @@ export const TOP_PLAYLISTS = graphql`
         uri
         title
         description
+        path(filePath: "/playlists/{Playlist.title}")
         upvote_aggregate {
           aggregate {
             count
