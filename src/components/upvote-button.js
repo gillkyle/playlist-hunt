@@ -1,3 +1,9 @@
+/**
+ * ============================================================================
+ * Displays the number of upvotes and whether the user has upvoted a playlist
+ * ============================================================================
+ */
+
 import React from "react"
 import { Stack, StatNumber, StatArrow, Button } from "@chakra-ui/core"
 import { useAuth0 } from "../../plugins/gatsby-plugin-auth0"

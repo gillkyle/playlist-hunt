@@ -1,3 +1,9 @@
+/**
+ * ============================================================================
+ * Persisted navigation at the top of all pages for the layout component
+ * ============================================================================
+ */
+
 import React from "react"
 import { Link as GatsbyLink, navigate } from "gatsby"
 import {

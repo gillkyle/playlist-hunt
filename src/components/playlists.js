@@ -1,3 +1,9 @@
+/**
+ * ============================================================================
+ * Renders a list of playlists that are passed in through props
+ * ============================================================================
+ */
+
 import React from "react"
 import {
   Box,
@@ -10,7 +16,6 @@ import {
 } from "@chakra-ui/core"
 
 import UpvoteButton from "./upvote-button"
-import { getPlaylistId } from "../utils/helpers"
 
 const Playlists = ({ playlists }) => {
   const { colorMode } = useColorMode()
@@ -33,9 +38,9 @@ const Playlists = ({ playlists }) => {
             <Box bg="gray.300" borderRadius={4}>
               <iframe
                 title={`Spotify playlist embed for ${playlist.title}`}
-                src={`https://open.spotify.com/embed/playlist/${getPlaylistId(
-                  playlist.uri
-                )}`}
+                src={`https://open.spotify.com/embed/playlist/${
+                  playlist.uri?.split(":")[2]
+                }`}
                 width="80"
                 height="80"
                 frameBorder="0"
