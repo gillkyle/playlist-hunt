@@ -6,7 +6,6 @@ import SpotifyEmbed from "../../components/spotify-embed"
 import UpvoteButton from "../../components/upvote-button"
 
 const PlaylistDetails = ({ data }) => {
-  console.log(data)
   return (
     <React.Fragment>
       <Heading as="h1">{data.playlist.title}</Heading>
