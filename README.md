@@ -3,11 +3,9 @@
     <img alt="Playlist Hunt" src="https://raw.githubusercontent.com/gillkyle/images/master/playlist-hunt/logo-large.png" width="300" />
   </a>
 </p>
-<h2 align="center">
-  ▲PlaylistHunt
-</h2>
-
-An example full-stack Gatsby app built with open source technologies.
+<p align="center">
+  <b>An example full-stack Gatsby app built with open source technologies.</b>
+</p>
 
 ## Overview
 
@@ -72,3 +70,8 @@ This project relies on several open source libraries and services:
 - [Apollo Client](https://www.apollographql.com/)
 - [Chakra UI](https://chakra-ui.com/)
 - [Formik](https://jaredpalmer.com/formik/)
+
+<h2 align="center">
+  ▲PlaylistHunt
+</h2>
+
