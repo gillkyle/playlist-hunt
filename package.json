@@ -25,6 +25,7 @@
     "formik": "^2.1.4",
     "gatsby": "^2.20.24-unifiedroutes-v2.130",
     "gatsby-plugin-chakra-ui": "^0.1.4",
+    "gatsby-plugin-netlify": "^2.3.11",
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.12.0",

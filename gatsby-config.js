@@ -10,5 +10,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-hasura`,
+    `gatsby-plugin-netlify`,
   ],
 }
