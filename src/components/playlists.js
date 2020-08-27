@@ -45,7 +45,7 @@ const Playlists = ({ playlists }) => {
                   fontSize="xl"
                   as={GatsbyLink}
                   to={
-                    playlist.path ??
+                    playlist.gatsbyPath ??
                     `/playlists/${slugify(playlist.title, { lower: true })}`
                   }
                 >

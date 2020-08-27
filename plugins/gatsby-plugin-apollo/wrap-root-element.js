@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { ApolloProvider } from "@apollo/react-hooks"
 import ApolloClient from "apollo-boost"
 import fetch from "isomorphic-fetch"
-import { useAuth0 } from "../gatsby-plugin-auth0"
+import { useAuth0 } from "@auth0/auth0-react"
 
 const ApolloComponent = ({ element }) => {
   const { loading, getIdTokenClaims } = useAuth0()

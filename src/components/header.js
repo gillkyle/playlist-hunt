@@ -18,7 +18,7 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/core"
-import { useAuth0 } from "../../plugins/gatsby-plugin-auth0"
+import { useAuth0 } from "@auth0/auth0-react"
 
 import Logo from "../img/logo.png"
 import ClientOnly from "./client-only"

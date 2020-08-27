@@ -6,7 +6,7 @@
 
 import React from "react"
 import { Stack, StatNumber, StatArrow, Button } from "@chakra-ui/core"
-import { useAuth0 } from "../../plugins/gatsby-plugin-auth0"
+import { useAuth0 } from "@auth0/auth0-react"
 import { useQuery, useMutation } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 
