@@ -4,7 +4,7 @@
   </a>
 </p>
 <p align="center">
-  <b>An example full-stack Gatsby app built with open source technologies.</b>
+  <b>An example full-stack Gatsby app built with open source technologies in <1000 source lines of code.</b>
 </p>
 
 ## Overview
