@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import {
   Box,
   Button,
@@ -48,9 +48,11 @@ export default () => {
   const [insertPlaylist] = useMutation(INSERT_PLAYLIST)
   const toast = useToast()
 
-  if (!loading && !isAuthenticated) {
-    navigate(`/`)
-  }
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      navigate(`/`)
+    }
+  })
 
   return (
     <React.Fragment>
