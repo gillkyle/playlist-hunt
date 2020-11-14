@@ -10,7 +10,7 @@ import {
   Input,
   Stack,
   useToast,
-} from "@chakra-ui/core"
+} from "@chakra-ui/react"
 import { navigate } from "gatsby"
 import { useAuth0 } from "@auth0/auth0-react"
 import { useMutation } from "@apollo/react-hooks"
@@ -161,7 +161,7 @@ export default () => {
               </Field>
               <Button
                 mt={2}
-                variantColor="blue"
+                colorScheme="blue"
                 isLoading={props.isSubmitting}
                 type="submit"
               >

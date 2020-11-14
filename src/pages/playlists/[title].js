@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react"
-import { Grid, Heading, Stack, Text } from "@chakra-ui/core"
+import { Grid, Heading, Stack, Text } from "@chakra-ui/react"
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 

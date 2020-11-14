@@ -5,15 +5,7 @@
  */
 
 import React from "react"
-import {
-  Box,
-  Grid,
-  Heading,
-  Stack,
-  Text,
-  PseudoBox,
-  useColorMode,
-} from "@chakra-ui/core"
+import { Box, Grid, Heading, Stack, Text } from "@chakra-ui/react"
 import { Link as GatsbyLink } from "gatsby"
 import slugify from "slugify"
 
@@ -21,16 +13,14 @@ import SpotifyEmbed from "./spotify-embed"
 import UpvoteButton from "./upvote-button"
 
 const Playlists = ({ playlists }) => {
-  const { colorMode } = useColorMode()
-
   return (
     <Stack width="100%" spacing="1px" my={4}>
       {playlists.map(playlist => (
-        <PseudoBox
+        <Box
           key={playlist.uri}
           _first={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
           _last={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
-          bg={{ light: "gray.100", dark: "gray.700" }[colorMode]}
+          bg="gray.100"
         >
           <Grid
             gridTemplateColumns="80px 1fr 80px"
@@ -58,7 +48,7 @@ const Playlists = ({ playlists }) => {
             </Stack>
             <UpvoteButton playlist={playlist} />
           </Grid>
-        </PseudoBox>
+        </Box>
       ))}
     </Stack>
   )
@@ -67,14 +57,12 @@ const Playlists = ({ playlists }) => {
 export default Playlists
 
 export const PlaylistsPlaceholder = () => {
-  const { colorMode } = useColorMode()
-
   return (
     <Stack width="100%" spacing="1px" my={4}>
       {Array(5)
         .fill()
         .map((_, index) => (
-          <PseudoBox
+          <Box
             key={index}
             height="100px"
             width="100%"
@@ -83,7 +71,7 @@ export const PlaylistsPlaceholder = () => {
               borderBottomLeftRadius: 4,
               borderBottomRightRadius: 4,
             }}
-            bg={{ light: "gray.100", dark: "gray.700" }[colorMode]}
+            bg="gray.100"
           />
         ))}
     </Stack>

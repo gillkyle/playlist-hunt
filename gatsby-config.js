@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    `gatsby-plugin-chakra-ui`,
+    `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-apollo`,
     {
       resolve: `gatsby-plugin-auth0`,

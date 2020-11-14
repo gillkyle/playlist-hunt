@@ -7,7 +7,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Heading, Text } from "@chakra-ui/core"
+import { Heading, Text } from "@chakra-ui/react"
 import Playlists from "../components/playlists"
 
 export const TOP_PLAYLISTS = graphql`

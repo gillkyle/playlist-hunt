@@ -16,8 +16,7 @@ import {
   MenuList,
   Stack,
   Text,
-  useColorMode,
-} from "@chakra-ui/core"
+} from "@chakra-ui/react"
 import { useAuth0 } from "@auth0/auth0-react"
 
 import Logo from "../img/logo.png"
@@ -25,7 +24,6 @@ import ClientOnly from "./client-only"
 
 const Header = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
-  const { toggleColorMode } = useColorMode()
 
   return (
     <Flex align="center" justify="space-between" p="4">
@@ -47,15 +45,10 @@ const Header = () => {
         <ClientOnly>
           {isAuthenticated ? (
             <Menu>
-              <MenuButton as={Button} leftIcon="chevron-down">
-                Profile
-              </MenuButton>
+              <MenuButton as={Button}>Profile</MenuButton>
               <MenuList placement="bottom-end">
                 <MenuItem isDisabled>{user?.email}</MenuItem>
                 <MenuItem onClick={() => navigate(`/submit`)}>Submit</MenuItem>
-                <MenuItem onClick={() => toggleColorMode()}>
-                  Toggle Color Mode
-                </MenuItem>
                 <MenuItem>
                   <a href="mailto:kyle.robert.gill@gmail.com">Contact Us</a>
                 </MenuItem>
@@ -65,7 +58,7 @@ const Header = () => {
           ) : (
             <Button
               variant="solid"
-              variantColor="blue"
+              colorScheme="blue"
               fontWeight="bold"
               onClick={() => loginWithRedirect()}
             >

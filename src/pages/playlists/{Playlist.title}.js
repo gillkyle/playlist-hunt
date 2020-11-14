@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Grid, Heading, Stack, Text } from "@chakra-ui/core"
+import { Grid, Heading, Stack, Text } from "@chakra-ui/react"
 
 import SpotifyEmbed from "../../components/spotify-embed"
 import UpvoteButton from "../../components/upvote-button"

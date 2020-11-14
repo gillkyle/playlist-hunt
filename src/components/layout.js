@@ -5,7 +5,7 @@
  */
 
 import React from "react"
-import { Flex, Grid, Stack, Text } from "@chakra-ui/core"
+import { Flex, Grid, Stack, Text } from "@chakra-ui/react"
 import Header from "./header"
 
 const Layout = ({ children }) => (

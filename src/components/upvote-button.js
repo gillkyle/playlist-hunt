@@ -5,7 +5,7 @@
  */
 
 import React from "react"
-import { Stack, StatNumber, StatArrow, Button } from "@chakra-ui/core"
+import { Stack, Stat, StatNumber, StatArrow, Button } from "@chakra-ui/react"
 import { useAuth0 } from "@auth0/auth0-react"
 import { useQuery, useMutation } from "@apollo/react-hooks"
 import gql from "graphql-tag"
@@ -68,9 +68,9 @@ const UpvoteButton = ({ playlist, ...props }) => {
 
   return (
     <Button
-      height="100%"
+      height="80px"
       variant={upvoted ? "outline" : "solid"}
-      variantColor="blue"
+      colorScheme="blue"
       onClick={() => {
         if (isAuthenticated) {
           if (upvoted) {
@@ -101,15 +101,17 @@ const UpvoteButton = ({ playlist, ...props }) => {
       {...props}
     >
       <Stack color={upvoted ? "blue.600" : "white"} align="center">
-        <StatArrow
-          color={upvoted ? "blue.600" : "white"}
-          type="increase"
-          m={0}
-        ></StatArrow>
-        <StatNumber fontSize="lg">
-          {(loading || error) && null}
-          {data && data?.upvotes?.[0].upvote_aggregate.aggregate.count}
-        </StatNumber>
+        <Stat>
+          <StatArrow
+            color={upvoted ? "blue.600" : "white"}
+            type="increase"
+            m={0}
+          ></StatArrow>
+          <StatNumber fontSize="lg">
+            {(loading || error) && null}
+            {data && data?.upvotes?.[0].upvote_aggregate.aggregate.count}
+          </StatNumber>
+        </Stat>
       </Stack>
     </Button>
   )

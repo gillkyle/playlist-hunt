@@ -1,5 +1,5 @@
 import React from "react"
-import { Heading, Text } from "@chakra-ui/core"
+import { Heading, Text } from "@chakra-ui/react"
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 
