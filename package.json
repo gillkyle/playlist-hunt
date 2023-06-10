@@ -24,7 +24,7 @@
     "apollo-boost": "^0.4.7",
     "formik": "^2.1.4",
     "framer-motion": "^2.9.4",
-    "gatsby": "^2.26.1",
+    "gatsby": "^4.25.7",
     "gatsby-plugin-netlify": "^2.3.11",
     "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
